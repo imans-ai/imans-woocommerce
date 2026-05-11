@@ -10,7 +10,7 @@
  * Author URI:        https://imans.ai
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       imans-analytics
+ * Text Domain:       imans-for-woocommerce
  * Domain Path:       /languages
  * WC requires at least: 7.0
  * WC tested up to:   9.4

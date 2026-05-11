@@ -14,11 +14,11 @@ if ( ! class_exists( 'WC_Settings_Page' ) ) {
 	return;
 }
 
-class WC_Settings_Imans_Analytics extends WC_Settings_Page {
+class WC_Settings_Imans_For_Woocommerce extends WC_Settings_Page {
 
 	public function __construct() {
-		$this->id    = 'imans-analytics';
-		$this->label = __( 'Imans Analytics', 'imans-analytics' );
+		$this->id    = 'imans-for-woocommerce';
+		$this->label = __( 'Imans Analytics', 'imans-for-woocommerce' );
 
 		parent::__construct();
 

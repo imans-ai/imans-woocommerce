@@ -26,7 +26,7 @@ WooCommerce core sees orders, products and revenue, but it **never sees raw HTTP
 | **On-site search terms + conversions** | no | **yes** |
 | **UTM / referrer / landing-page attribution** | partial | **yes** |
 
-`imans-woocommerce` closes that gap **on the merchant's own server**, with no third-party trackers, no shared analytics accounts, and no data leaving WordPress unless you connect the store to Imans.
+`imans-for-woocommerce` closes that gap **on the merchant's own server**, with no third-party trackers, no shared analytics accounts, and no data leaving WordPress unless you connect the store to Imans.
 
 ---
 
@@ -87,8 +87,8 @@ This plugin is built so it can ship in stores with strict privacy regimes (GDPR,
 
 ```bash
 cd wp-content/plugins
-git clone git@github.com:imans-ai/imans-woocommerce.git imans-analytics
-wp plugin activate imans-analytics
+git clone git@github.com:imans-ai/imans-woocommerce.git
+wp plugin activate imans-for-woocommerce
 wp option update imans_analytics_tracking_enabled 1
 ```
 
@@ -188,7 +188,7 @@ git clone git@github.com:imans-ai/imans-woocommerce.git
 cd imans-woocommerce
 
 # Symlink into a local WordPress install
-ln -s "$(pwd)" /path/to/wp-content/plugins/imans-analytics
+ln -s "$(pwd)" /path/to/wp-content/plugins/imans-for-woocommerce
 
 # Or use wp-env / Local by Flywheel
 ```

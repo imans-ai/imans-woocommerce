@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit;
 
 class Privacy {
 
-	const GROUP_ID    = 'imans-analytics';
+	const GROUP_ID    = 'imans-for-woocommerce';
 	const GROUP_LABEL = 'Imans Analytics';
 
 	public static function register() {
@@ -42,16 +42,16 @@ class Privacy {
 	}
 
 	public static function register_exporter( $exporters ) {
-		$exporters['imans-analytics'] = array(
-			'exporter_friendly_name' => __( 'Imans Analytics', 'imans-analytics' ),
+		$exporters['imans-for-woocommerce'] = array(
+			'exporter_friendly_name' => __( 'Imans Analytics', 'imans-for-woocommerce' ),
 			'callback'               => array( __CLASS__, 'export_data' ),
 		);
 		return $exporters;
 	}
 
 	public static function register_eraser( $erasers ) {
-		$erasers['imans-analytics'] = array(
-			'eraser_friendly_name' => __( 'Imans Analytics', 'imans-analytics' ),
+		$erasers['imans-for-woocommerce'] = array(
+			'eraser_friendly_name' => __( 'Imans Analytics', 'imans-for-woocommerce' ),
 			'callback'             => array( __CLASS__, 'erase_data' ),
 		);
 		return $erasers;
@@ -132,7 +132,7 @@ class Privacy {
 				$items_removed = $events_deleted + $sessions_deleted;
 			}
 		} else {
-			$messages[] = __( 'No Imans Analytics records linked to this email. Pseudonymous data without an email bridge cannot be matched.', 'imans-analytics' );
+			$messages[] = __( 'No Imans Analytics records linked to this email. Pseudonymous data without an email bridge cannot be matched.', 'imans-for-woocommerce' );
 		}
 
 		return array(
@@ -163,18 +163,18 @@ class Privacy {
 
 	private static function humanize_field( $key ) {
 		$map = array(
-			'session_id'        => __( 'Session ID', 'imans-analytics' ),
-			'visitor_id'        => __( 'Visitor ID', 'imans-analytics' ),
-			'started_at'        => __( 'Session started', 'imans-analytics' ),
-			'last_seen_at'      => __( 'Last seen', 'imans-analytics' ),
-			'landing_page'      => __( 'Landing page', 'imans-analytics' ),
-			'referrer'          => __( 'Referrer', 'imans-analytics' ),
-			'utm_source'        => __( 'UTM source', 'imans-analytics' ),
-			'utm_medium'        => __( 'UTM medium', 'imans-analytics' ),
-			'utm_campaign'      => __( 'UTM campaign', 'imans-analytics' ),
-			'device_type'       => __( 'Device type', 'imans-analytics' ),
-			'country'           => __( 'Country', 'imans-analytics' ),
-			'purchase_order_id' => __( 'Linked order ID', 'imans-analytics' ),
+			'session_id'        => __( 'Session ID', 'imans-for-woocommerce' ),
+			'visitor_id'        => __( 'Visitor ID', 'imans-for-woocommerce' ),
+			'started_at'        => __( 'Session started', 'imans-for-woocommerce' ),
+			'last_seen_at'      => __( 'Last seen', 'imans-for-woocommerce' ),
+			'landing_page'      => __( 'Landing page', 'imans-for-woocommerce' ),
+			'referrer'          => __( 'Referrer', 'imans-for-woocommerce' ),
+			'utm_source'        => __( 'UTM source', 'imans-for-woocommerce' ),
+			'utm_medium'        => __( 'UTM medium', 'imans-for-woocommerce' ),
+			'utm_campaign'      => __( 'UTM campaign', 'imans-for-woocommerce' ),
+			'device_type'       => __( 'Device type', 'imans-for-woocommerce' ),
+			'country'           => __( 'Country', 'imans-for-woocommerce' ),
+			'purchase_order_id' => __( 'Linked order ID', 'imans-for-woocommerce' ),
 		);
 		return $map[ $key ] ?? $key;
 	}

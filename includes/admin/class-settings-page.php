@@ -28,8 +28,8 @@ class Settings_Page {
 		if ( ! class_exists( 'WC_Settings_Page' ) ) {
 			return $pages;
 		}
-		require_once __DIR__ . '/class-wc-settings-imans-analytics.php';
-		$pages[] = new WC_Settings_Imans_Analytics();
+		require_once __DIR__ . '/class-wc-settings-imans-for-woocommerce.php';
+		$pages[] = new WC_Settings_Imans_For_Woocommerce();
 		return $pages;
 	}
 
@@ -41,22 +41,22 @@ class Settings_Page {
 	public static function build_settings() {
 		return array(
 			array(
-				'title' => __( 'Imans Analytics', 'imans-analytics' ),
+				'title' => __( 'Imans Analytics', 'imans-for-woocommerce' ),
 				'type'  => 'title',
-				'desc'  => __( 'First-party storefront analytics that feed your Imans dashboard. All data stays on this server until Imans pulls daily aggregates.', 'imans-analytics' ),
+				'desc'  => __( 'First-party storefront analytics that feed your Imans dashboard. All data stays on this server until Imans pulls daily aggregates.', 'imans-for-woocommerce' ),
 				'id'    => 'imans_analytics_section_tracking',
 			),
 			array(
-				'title'         => __( 'Enable tracking', 'imans-analytics' ),
-				'desc'          => __( 'Capture storefront sessions, page views, funnel events and on-site search. Off by default; turn on after you have a privacy notice in place.', 'imans-analytics' ),
+				'title'         => __( 'Enable tracking', 'imans-for-woocommerce' ),
+				'desc'          => __( 'Capture storefront sessions, page views, funnel events and on-site search. Off by default; turn on after you have a privacy notice in place.', 'imans-for-woocommerce' ),
 				'id'            => Activator::OPTION_TRACKING_ENABLED,
 				'type'          => 'checkbox',
 				'default'       => 'no',
 				'desc_tip'      => true,
 			),
 			array(
-				'title'    => __( 'Event retention (days)', 'imans-analytics' ),
-				'desc'     => __( 'How long to keep raw events. Daily aggregates are kept forever and are unaffected.', 'imans-analytics' ),
+				'title'    => __( 'Event retention (days)', 'imans-for-woocommerce' ),
+				'desc'     => __( 'How long to keep raw events. Daily aggregates are kept forever and are unaffected.', 'imans-for-woocommerce' ),
 				'id'       => Activator::OPTION_RETENTION_DAYS,
 				'type'     => 'number',
 				'default'  => 30,
@@ -68,8 +68,8 @@ class Settings_Page {
 				),
 			),
 			array(
-				'title'    => __( 'Client-side sample rate (%)', 'imans-analytics' ),
-				'desc'     => __( 'Percentage of storefront visitors to track. 100 sends every visit; lower this only on very high-traffic stores.', 'imans-analytics' ),
+				'title'    => __( 'Client-side sample rate (%)', 'imans-for-woocommerce' ),
+				'desc'     => __( 'Percentage of storefront visitors to track. 100 sends every visit; lower this only on very high-traffic stores.', 'imans-for-woocommerce' ),
 				'id'       => Activator::OPTION_SAMPLE_RATE,
 				'type'     => 'number',
 				'default'  => 100,
@@ -85,7 +85,7 @@ class Settings_Page {
 				'id'   => 'imans_analytics_section_tracking',
 			),
 			array(
-				'title' => __( 'Status', 'imans-analytics' ),
+				'title' => __( 'Status', 'imans-for-woocommerce' ),
 				'type'  => 'title',
 				'id'    => 'imans_analytics_section_status',
 			),
@@ -121,12 +121,12 @@ class Settings_Page {
 		$last_aggregation = get_option( Activator::OPTION_LAST_AGGREGATION, '' );
 
 		$rows = array(
-			__( 'Plugin version', 'imans-analytics' )       => IMANS_ANALYTICS_VERSION,
-			__( 'Schema version', 'imans-analytics' )       => IMANS_ANALYTICS_SCHEMA_VERSION,
-			__( 'Last aggregation (UTC)', 'imans-analytics' ) => $last_aggregation ? $last_aggregation : __( 'never run yet', 'imans-analytics' ),
-			__( 'Sessions stored', 'imans-analytics' )      => number_format_i18n( $counts[0] ),
-			__( 'Events stored', 'imans-analytics' )        => number_format_i18n( $counts[1] ),
-			__( 'Daily aggregates', 'imans-analytics' )     => number_format_i18n( $counts[2] ),
+			__( 'Plugin version', 'imans-for-woocommerce' )       => IMANS_ANALYTICS_VERSION,
+			__( 'Schema version', 'imans-for-woocommerce' )       => IMANS_ANALYTICS_SCHEMA_VERSION,
+			__( 'Last aggregation (UTC)', 'imans-for-woocommerce' ) => $last_aggregation ? $last_aggregation : __( 'never run yet', 'imans-for-woocommerce' ),
+			__( 'Sessions stored', 'imans-for-woocommerce' )      => number_format_i18n( $counts[0] ),
+			__( 'Events stored', 'imans-for-woocommerce' )        => number_format_i18n( $counts[1] ),
+			__( 'Daily aggregates', 'imans-for-woocommerce' )     => number_format_i18n( $counts[2] ),
 		);
 
 		echo '<tr valign="top"><th scope="row"></th><td>';
