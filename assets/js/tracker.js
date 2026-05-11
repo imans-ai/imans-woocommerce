@@ -223,13 +223,36 @@
 
 	/* ---------------------- capture ---------------------- */
 
+	let lastVariationId = 0;
+
 	function start() {
 		// Page view always (the cheap baseline).
 		buffer('page_view', {});
 
 		if (cfg.isProductPage && cfg.productId) {
-			buffer('view_item', { product_id: cfg.productId });
+			buffer('view_item', { product_id: cfg.productId, variation_id: null });
 		}
+
+		// Variable products: re-fire `view_item` whenever the shopper
+		// picks a different variation. WooCommerce updates the hidden
+		// `variation_id` input and dispatches a native change event on
+		// it via jQuery's .change() — listening at the document level
+		// catches it without binding jQuery ourselves.
+		document.addEventListener('change', function (evt) {
+			const target = evt.target;
+			if (!target || target.name !== 'variation_id') {
+				return;
+			}
+			const variationId = Number(target.value);
+			if (!variationId || variationId === lastVariationId) {
+				return;
+			}
+			lastVariationId = variationId;
+			buffer('view_item', {
+				product_id: cfg.productId,
+				variation_id: variationId,
+			});
+		}, true);
 
 		if (cfg.isCheckoutPage) {
 			buffer('begin_checkout', {});

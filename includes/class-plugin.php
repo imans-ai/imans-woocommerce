@@ -32,5 +32,11 @@ class Plugin {
 
 		add_action( Activator::CRON_HOURLY_ROLL, array( '\Imans\Analytics\Aggregator', 'roll_hourly' ) );
 		add_action( Activator::CRON_DAILY_PURGE, array( '\Imans\Analytics\Purger', 'run_daily' ) );
+
+		Privacy::register();
+
+		if ( is_admin() ) {
+			add_filter( 'woocommerce_get_settings_pages', array( '\Imans\Analytics\Admin\Settings_Page', 'register' ) );
+		}
 	}
 }
