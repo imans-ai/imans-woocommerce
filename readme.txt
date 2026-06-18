@@ -4,7 +4,7 @@ Tags: woocommerce, analytics, sessions, conversion, funnel, gdpr
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,7 @@ All read endpoints authenticate with the same WooCommerce consumer key and secre
 * `GET /wp-json/imans-analytics/v1/health` — version, schema version, row counts
 * `GET /wp-json/imans-analytics/v1/sessions/stats` — daily session aggregates
 * `GET /wp-json/imans-analytics/v1/funnel/stats` — daily funnel event counts
+* `GET /wp-json/imans-analytics/v1/products/stats` — daily per-product / per-variation view & add-to-cart counts
 * `GET /wp-json/imans-analytics/v1/search-terms` — daily search-term aggregates
 * `POST /wp-json/imans-analytics/v1/track` — internal tracker ingest (nonce + rate-limited; not for external use)
 
@@ -72,10 +73,16 @@ Raw events are kept for 30 days by default (configurable). Daily aggregates are 
 
 == Changelog ==
 
+= 0.2.0 =
+* Add `GET /products/stats` — daily per-product / per-variation `view_item` and `add_to_cart` counts, computed on-the-fly from raw events (no schema change). Enables per-listing traffic attribution in the Imans dashboard.
+
 = 0.1.0 =
 * Initial release. Scaffolding, custom tables, activation, tracker, /track and /health endpoints.
 
 == Upgrade Notice ==
+
+= 0.2.0 =
+Adds the per-product/per-variation traffic endpoint used by Imans for per-listing analytics.
 
 = 0.1.0 =
 First release.
