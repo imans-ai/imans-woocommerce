@@ -92,7 +92,11 @@ class Products_Stats_Endpoint {
 
 	private static function date_param( $value, $default_relative ) {
 		if ( ! $value ) {
-			return gmdate( 'Y-m-d', strtotime( $default_relative ) );
+			// Compute the default entirely in UTC: occurred_at is stored in
+			// UTC, so parsing the relative string against server-local time
+			// (what strtotime() does) could land on a different calendar day.
+			$now_utc = new \DateTimeImmutable( 'now', new \DateTimeZone( 'UTC' ) );
+			return $now_utc->modify( $default_relative )->format( 'Y-m-d' );
 		}
 		return substr( (string) $value, 0, 10 );
 	}
