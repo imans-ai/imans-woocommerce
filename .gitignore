@@ -5,3 +5,5 @@ vendor/
 .idea/
 .vscode/
 *.log
+.phpunit.result.cache
+tests/.patchwork-cache/

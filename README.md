@@ -132,6 +132,7 @@ All endpoints are namespaced under `/wp-json/imans-analytics/v1/`.
 | `/health` | GET | WC Basic | Plugin presence probe — version, schema, row counts. |
 | `/sessions/stats` | GET | WC Basic | Daily session aggregates with computed conversion / bounce / abandonment. |
 | `/funnel/stats` | GET | WC Basic | Daily counts of `view_item`, `add_to_cart`, `begin_checkout`, etc. |
+| `/products/stats` | GET | WC Basic | Daily per-product / per-variation `view_item` + `add_to_cart` counts, computed on-the-fly from raw events. |
 | `/search-terms` | GET | WC Basic | Daily search-term aggregates with conversion counts. |
 
 ### Authentication
@@ -215,6 +216,7 @@ That suite includes a regression guard that **proves the backend still works whe
 | Tracker + `/track` + `/health` | shipped (v0.1.0) |
 | Hourly aggregator + daily purger | shipped (v0.1.0) |
 | `/sessions/stats`, `/funnel/stats`, `/search-terms` | shipped (v0.1.0) |
+| `/products/stats` (per-listing traffic) | shipped (v0.2.0) |
 | Backend probe + merge into `ChannelPerformanceSnapshot` | shipped (v0.1.0) |
 | Settings admin page | planned (v0.2) |
 | GDPR/LGPD exporter + eraser hooks | planned (v0.2) |

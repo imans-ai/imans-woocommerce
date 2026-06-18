@@ -62,6 +62,17 @@ class Rest_Controller {
 
 		register_rest_route(
 			$ns,
+			'/products/stats',
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( '\Imans\Analytics\Rest\Products_Stats_Endpoint', 'handle' ),
+				'permission_callback' => array( '\Imans\Analytics\Rest\Products_Stats_Endpoint', 'permission' ),
+				'args'                => self::date_window_args(),
+			)
+		);
+
+		register_rest_route(
+			$ns,
 			'/search-terms',
 			array(
 				'methods'             => 'GET',

@@ -1,0 +1,13 @@
+{
+	"blacklist": [
+		"vendor/phpunit",
+		"vendor/sebastian",
+		"vendor/symfony",
+		"vendor/nikic",
+		"vendor/myclabs",
+		"vendor/doctrine",
+		"vendor/phar-io",
+		"vendor/theseer",
+		"vendor/hamcrest"
+	]
+}
